@@ -2,44 +2,22 @@ package com.myself;
 
 public class MyLeetCode {
     public static void main(String[] args) {
-        int[] arr = {1, 1, 2, 2, 3, 4, 4, 5, 6};
-        int length = new Solution().removeDuplicates(arr);
-        System.out.println("length: " + length);
-
-        for (int x = 0; x < length; x++) {
-            System.out.print(arr[x] + " ");
-        }
+        String arr = "hello";
+        new Solution().reverseString(arr.toCharArray());
     }
 }
 
 class Solution {
-    public int removeDuplicates(int[] nums) {
-
-        if (nums.length == 1) {
-            return 1;
+    public void reverseString(char[] s) {
+        for (int i = 0; i < s.length / 2; i++) {
+            char box = s[s.length-(1+i)];
+            s[s.length-(1+i)] = s[i];
+            s[i] = box;
         }
 
-        int curIdx = 0;
-        for (int i = 0; i < nums.length; i++) {
-
-            if (i + 1 == nums.length) {
-                nums[curIdx] = nums[nums.length - 1];
-                continue;
-            }
-
-            if (!(nums[i + 1] == nums[i])) {
-                nums[curIdx] = nums[i];
-                curIdx += 1;
-            }
-
-
-        }
-
-        for (int i = 0; i < nums.length; i++) {
-            System.out.print(nums[i] + ", ");
+        for (int i = 0; i < s.length; i++) {
+            System.out.print(s[i] + " ");
         }
         System.out.println();
-
-        return curIdx + 1;
     }
 }
